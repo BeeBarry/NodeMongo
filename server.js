@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require ("mongoose");
@@ -13,7 +14,7 @@ app.post("/blogpost", (req, res) => {
 });
 
 
-mongoose.connect("mongodb+srv://Barry4:123456admin@barryapi.v74z3.mongodb.net/Products-API?retryWrites=true&w=majority&appName=BarryAPI")
+mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log("connected to mongo");
     app.listen(PORT, () => {
